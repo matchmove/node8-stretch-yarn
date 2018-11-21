@@ -19,6 +19,3 @@ testing"
 
 RUN apt-get update -y
 RUN apt-get install -y docker-engine
-
-# Run docker.
-RUN systemctl start docker
