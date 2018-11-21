@@ -12,7 +12,7 @@ RUN apt install -y curl apt-transport-https \
     software-properties-common ca-certificates
 
 # Install docker.
-RUN curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
+RUN curl -fsSL https://yum.dockerproject.org/gpg | apt-key add -
 RUN add-apt-repository "deb https://apt.dockerproject.org/repo/ \
 debian-$(lsb_release -cs) \
 testing"
