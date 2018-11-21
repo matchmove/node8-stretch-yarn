@@ -8,7 +8,8 @@ RUN curl -SLO "https://s3.amazonaws.com/codeship-jet-releases/2.9.0/jet-linux_am
 RUN tar -xaC /usr/local/bin -f jet-linux_amd64_2.9.0.tar.gz
 RUN chmod +x /usr/local/bin/jet
 
-RUN apt-get update && apt-get install -y apt-transport-https && apt-get install -y ca-certificates && apt-get install -y curl && apt-get install -y software-properties-common && apt-get install -y gnupg2
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-RUN apt-get update && apt-get install -y docker-ce
+RUN apt-get install -y apt-transport-https dirmngr
+RUN echo 'deb https://apt.dockerproject.org/repo debian-stretch main' >> /etc/apt/sources.list
+RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys F76221572C52609D
+RUN apt-get update
+RUN apt-get install -y docker-engine
